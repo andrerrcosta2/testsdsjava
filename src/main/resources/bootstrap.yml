@@ -1,0 +1,10 @@
+spring:
+  main:
+    start-class: com.nobblecrafts.challenge.SdtpApplication
+  application:
+    name: sdtp-service
+  profiles:
+    active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

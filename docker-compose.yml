@@ -1,0 +1,40 @@
+version: '3.5'
+
+networks:
+  sdtp-network:
+    name: sdtp-network
+
+services:
+  postgres-sdtp-service:
+    container_name: postgres-sdtp-service
+    image: 'postgres:12-alpine'
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sdtp-service
+    restart: unless-stopped
+    networks:
+      - sdtp-network
+
+  sdtp-service:
+    container_name: sdtp-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_ACTIVE_PROFILE=dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-sdtp-service:5432/sdtp-service
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+    restart: unless-stopped
+    networks:
+      - sdtp-network
+    depends_on:
+      - postgres-sdtp-service
+    ports:
+      - "8080:8080"

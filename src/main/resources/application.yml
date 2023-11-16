@@ -1,0 +1,26 @@
+server:
+  port: '8080'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    restart:
+      enabled: true
+    info:
+      enabled: true
+    health:
+      show-details: always
+      enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    com.nobblecrafts.challenge: INFO
+    com.zaxxer.hikari: DEBUG
+
+spring:
+  main:
+    start-class: com.nobblecrafts.challenge.SdtpApplication
