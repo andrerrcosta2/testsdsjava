@@ -18,9 +18,5 @@ EXPOSE 8080
 
 # Copy the JAR file into the Docker image
 COPY target/$APP_FILE $APP_FILE
-
-# Entry point command
 ENTRYPOINT ["java", "-jar", "sdtp-service.jar"]
-
-# User to run the application (adjust the user ID as needed)
 USER 1001
