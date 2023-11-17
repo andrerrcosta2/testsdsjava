@@ -28,6 +28,7 @@ public class ProfissionalDaoRepository implements ProfessionalRepository {
     // e gasta menos processamento
     @Override
     public Set<FullProfissionalResponse> getProfissionais(String q, Set<String> fields) {
+        log.info("\n\nWhat a hell? {}\n\n", q);
         Iterable<ProfissionalJpaEntity> entities = q != null ?
                 repository.findByNomeContainingOrCargoContaining(q, q) :
                 repository.findAll();

@@ -30,6 +30,7 @@ public class ContatoDaoRepository implements ContatoRepository {
     // e gasta menos processamento
     @Override
     public Set<FullContatoResponse> getContatos(String q, Set<String> fields) {
+        log.info("\n\nWhat a hell? {}\n\n", q);
         Iterable<ContatoJpaEntity> entities = q != null ? repository.findByNomeContainingOrContatoContaining(q, q) : repository.findAll();
         return mapper.fromSpecifiedFieldsToFullContatoResponse(entities, fields);
     }

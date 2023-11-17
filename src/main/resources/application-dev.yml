@@ -3,6 +3,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     url: jdbc:postgresql://localhost:5432/sdtp-service
+#    url: jdbc:postgresql://postgres-sdtp-service:5432/sdtp-service
     password: postgres
     initialization-mode: always
     hikari:

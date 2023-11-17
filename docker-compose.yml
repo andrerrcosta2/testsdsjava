@@ -28,6 +28,7 @@ services:
     environment:
       - SPRING_ACTIVE_PROFILE=dev
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-sdtp-service:5432/sdtp-service
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
